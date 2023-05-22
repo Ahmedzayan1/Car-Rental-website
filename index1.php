@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<?php
+session_start();
+if(!isset($_SESSION['ssn'])){
+   echo "<script>location.replace('login.php');</script>";
+}
+?>
+
+
+
+
+</body>
+</html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Erkab
+      </title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+	  		 <script>
+            var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth() + 1; //January is 0!
+var yyyy = today.getFullYear();
+
+if (dd < 10) {
+   dd = '0' + dd;
+}
+
+if (mm < 10) {
+   mm = '0' + mm;
+} 
+    
+today = yyyy + '-' + mm + '-' + dd;
+document.getElementById("start_date").setAttribute("min", today);
+document.getElementById("end_date").setAttribute("min", today);
+
+function validateForm(){
+	var start_date = document.forms["myform"]["start_date"].value;
+	var end_date = document.forms["myform"]["end_date"].value;
+	if(end_date < start_date){
+		alert("start date must be before end date!!")
+		return false;
+		}
+		}
+		</script>
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  
+      <div class="loader_bg">
+         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+      </div>
+       end loader -->
+       <header>
+       <!-- header -->
+      <header>
+         <!-- header inner -->
+         <div class="header">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                           <div class="logo">
+                              <a href="index1.php"><img src="images/logo.png" alt="#" /></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                     <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                           <ul class="navbar-nav mr-auto">
+                              <li class="nav-item">
+                                 <a class="nav-link" href="index1.php"> Home  </a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="#">Contact us</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="reserved.php">Reserved</a>
+                              </li>
+                               <li class="nav-item">
+                                 <a class="nav-link" href="payment.php">Payment</a>
+                              </li>
+                           </ul>
+                           <div class="sign_btn"><a href="login.php">Sign out</a></div>     
+                        </div>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+      </header>
+      <!-- end header inner -->
+                     
+
+     <!-- bestCar -->
+      <div id="contact" class="bestCar">
+         <div class="container">
+
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="row">
+                     <div class="col-md-6 offset-md-6">
+                        <form class="main_form" name="myform" onsubmit="return validateForm()" method="post" action="#" >
+                           <div class="titlepage" >
+                              <h2>Find Your Best Car <?php echo $_SESSION["fname"];?>!</h2>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-12 ">
+                                 <select name="carType" required>
+                                    <option value="0">Choose car Type</option>
+                                    <option value="sedan">Sedan</option>
+                                    <option value="SUV">SUV</option>
+                                    <option value="Hatchback">Hatchback</option>
+                                    <option value="Sports Car">Sports Car</option>
+                                    <option value="Coupe">Coupe</option>
+                                    <option value="MiniVan">MiniVan</option>
+                                 </select>
+                              </div>
+                              <div class="col-md-12">
+                                 Car Model<input class="contactus" min="0" placeholder="model" type="text" name="model"> 
+								         Car Model Year<input class="contactus" min="1990" max="2023" placeholder="year" type="number" name="year"> 	
+                                 Price min<input class="contactus" min="0" placeholder="min" type="number" name="min"> 
+								         Price max<input class="contactus" min="0" placeholder="max" type="number" name="max"> 								 
+                              </div>
+							         <div class="col-md-12">
+                                 Country name<input class="contactus" placeholder="country" type="country" name="country" required> 
+								         City name<a style="font-size: 10px">(leave empty if you want to rent from anywhere in country)<a><input class="contactus" placeholder="city" type="city" name="city"> 								 
+                              </div>
+                              <div class="col-md-12">
+                                 Start Date<input class="contactus" id="start_date" type="date" min="<?= date('Y-m-d'); ?>" name="start_date" required> 
+								         End Date<input class="contactus" id="end_date" type="date" min="<?= date('Y-m-d'); ?>" name="end_date" required> 
+                              </div>
+                              <div class="col-sm-12">
+                                 <input  style=" margin-top: 50px;
+    width: 100%;
+    background-color: #ffd900;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 100px;
+    cursor: pointer;
+     text-align: center;
+
+    border-color: transparent;" type="submit" name="submit" value="Find Car" >
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end bestCar -->
+   
+      
+      <!-- Javascript files-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/plugin.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<?php
+if(isset($_POST['submit'])){
+$type = $_POST['carType'];
+$min = $_POST['min'];
+$max = $_POST['max'];
+$country = $_POST['country'];
+$city = $_POST['city'];
+$start = $_POST['start_date'];
+$end = $_POST['end_date'];
+$model = $_POST['model'];
+$year = $_POST['year'];
+$_SESSION["model"] = "$model";
+$_SESSION["year"] = "$year";
+$_SESSION["type"] = "$type";
+$_SESSION["min"] = "$min";
+$_SESSION["max"] = "$max";
+$_SESSION["country"] = "$country";
+$_SESSION["city"] = "$city";
+$_SESSION["start"] = "$start";
+$_SESSION["end"] = "$end";
+echo "<script> location.replace('retrcar.php') </script>";
+}
+?>
+   </body>
+</html>
